@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>一生必买 · 做工标杆清单</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="一生必买">
+<meta name="theme-color" content="#F2F2F7">
+<meta name="description" content="44 件把做工做到行业尽头的产品，可在 iPhone 上勾选、记录、长期保存。">
+<style>
+:root{
+  --bg:#F2F2F7; --card:#FFFFFF; --text:#1C1C1E; --sub:#6E6E73; --hint:#8E8E93;
+  --sep:rgba(60,60,67,.11); --blue:#007AFF; --green:#34C759; --fill:#EFEFF4;
+  --shadow:0 1px 2px rgba(0,0,0,.04); --radius:16px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#000000; --card:#1C1C1E; --text:#F2F2F7; --sub:#98989F; --hint:#8E8E93;
+    --sep:rgba(84,84,88,.55); --blue:#0A84FF; --green:#30D158; --fill:#2C2C2E;
+    --shadow:none;
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  padding-bottom:calc(84px + env(safe-area-inset-bottom));
+}
+button,input,textarea{font-family:inherit;font-size:inherit;color:inherit}
+button{border:0;background:none;cursor:pointer;padding:0}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.app{max-width:640px;margin:0 auto;padding:0 16px}
+
+/* header */
+.hero{padding:calc(18px + env(safe-area-inset-top)) 4px 8px}
+.eyebrow{font-size:11px;letter-spacing:.16em;color:var(--hint);font-weight:500}
+h1{font-size:34px;line-height:1.15;letter-spacing:-.02em;margin:8px 0 6px;font-weight:600}
+.lede{font-size:13px;color:var(--sub);margin:0 0 18px;line-height:1.6}
+.progress-card{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:16px;display:flex;align-items:center;gap:16px;
+}
+.ring-wrap{position:relative;width:72px;height:72px;flex:none}
+.ring{width:72px;height:72px;transform:rotate(-90deg)}
+.ring .track{stroke:var(--fill)}
+.ring .bar{stroke:var(--blue);stroke-linecap:round;transition:stroke-dashoffset .5s ease}
+.ring-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600}
+.pstats{min-width:0;flex:1}
+.pstats .big{font-size:19px;font-weight:600;line-height:1.25}
+.pstats .big span{color:var(--blue)}
+.pstats .small{font-size:12px;color:var(--sub);margin-top:3px}
+.pstats .small b{font-weight:500;color:var(--text)}
+.pstats .cheer{font-size:12px;color:var(--green);margin-top:4px;font-weight:500}
+
+.toolbar{display:flex;gap:8px;margin:14px 0 4px;align-items:center}
+.search-box{
+  flex:1;display:flex;align-items:center;gap:8px;background:var(--card);
+  border-radius:12px;padding:0 12px;height:40px;box-shadow:var(--shadow);
+}
+.search-box .ic{width:17px;height:17px;color:var(--hint)}
+.search-box input{border:0;outline:0;background:none;flex:1;min-width:0;font-size:14px}
+.search-box input::placeholder{color:var(--hint)}
+.hide-btn{
+  height:40px;padding:0 12px;border-radius:12px;background:var(--card);color:var(--sub);
+  font-size:13px;box-shadow:var(--shadow);white-space:nowrap;display:flex;align-items:center;gap:5px;
+}
+.hide-btn.on{background:var(--blue);color:#fff}
+.hide-btn .ic{width:15px;height:15px}
+
+/* groups */
+.section{margin-top:22px}
+.sec-head{display:flex;align-items:center;gap:9px;padding:0 6px 9px;width:100%;text-align:left}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.sec-title{font-size:15px;font-weight:600;flex:1;min-width:0}
+.sec-sub{font-size:11px;color:var(--hint);font-weight:400;margin-left:4px}
+.sec-count{font-size:12px;color:var(--hint);font-variant-numeric:tabular-nums}
+.sec-chev{width:15px;height:15px;color:var(--hint);transition:transform .25s}
+.section.closed .sec-chev{transform:rotate(-90deg)}
+.group-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.item + .item{border-top:.5px solid var(--sep)}
+.item-row{display:flex;align-items:flex-start;gap:12px;padding:13px 13px 13px 14px;min-height:64px;user-select:none}
+.check{
+  width:24px;height:24px;border-radius:50%;border:1.8px solid var(--hint);flex:none;margin-top:2px;
+  display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s,border-color .2s,transform .2s;
+}
+.check .ic{width:14px;height:14px;stroke-width:2.6;opacity:0;transition:opacity .18s}
+.item.done .check{background:var(--green);border-color:var(--green)}
+.item.done .check .ic{opacity:1}
+.item.done .check.pop{transform:scale(1.18)}
+.item-main{flex:1;min-width:0}
+.item-top{display:flex;align-items:baseline;gap:8px}
+.item-name{font-size:14px;font-weight:500;flex:1;min-width:0;line-height:1.4}
+.item.done .item-name{color:var(--hint);text-decoration:line-through;text-decoration-color:var(--hint)}
+.price{font-size:12px;color:var(--sub);white-space:nowrap;font-variant-numeric:tabular-nums}
+.meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.cat{font-size:11px;color:var(--sub);background:var(--fill);padding:1px 7px;border-radius:5px}
+.tag{font-size:11px;padding:1px 7px;border-radius:5px;background:rgba(0,122,255,.1);color:var(--blue)}
+.tag.warn{background:rgba(255,149,0,.13);color:#C77700}
+.tag.star{background:rgba(175,82,222,.12);color:#AF52DE}
+@media (prefers-color-scheme:dark){.tag.warn{color:#FFB340}.tag.star{color:#DA8BFF}}
+.why{font-size:12px;color:var(--sub);line-height:1.55;margin-top:6px}
+.chev-btn{width:30px;height:34px;display:flex;align-items:center;justify-content:center;color:var(--hint);flex:none;margin-top:-2px}
+.chev-btn .ic{width:16px;height:16px;transition:transform .22s}
+.item.open .chev-btn .ic{transform:rotate(90deg)}
+.detail{padding:0 16px 16px 50px;font-size:13px;color:var(--sub);line-height:1.65;user-select:text}
+.detail .craft{border-left:2px solid var(--blue);padding-left:11px;margin-bottom:10px}
+.detail .dline{font-size:11px;color:var(--hint);margin-top:6px}
+.detail .danger{color:#FF3B30;font-size:12px;margin-top:12px;display:inline-flex;align-items:center;gap:4px}
+.detail .danger .ic{width:14px;height:14px}
+.empty{padding:48px 20px;text-align:center;color:var(--hint);font-size:13px;line-height:1.7}
+.empty strong{display:block;color:var(--text);font-size:15px;font-weight:500;margin-bottom:6px}
+
+/* about */
+.about-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-top:14px}
+.about-card h2{font-size:15px;margin:0 0 8px;font-weight:600}
+.about-card p{font-size:13px;color:var(--sub);margin:0 0 10px;line-height:1.7}
+.about-card p:last-child{margin-bottom:0}
+.about-card ul{margin:0 0 10px;padding-left:18px;font-size:13px;color:var(--sub);line-height:1.8}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.field label{font-size:12px;color:var(--hint)}
+.field input{
+  height:40px;border:.5px solid var(--sep);border-radius:10px;background:var(--bg);
+  padding:0 11px;outline:0;font-size:14px;
+}
+.field input:focus{border-color:var(--blue)}
+.btn{
+  min-height:42px;border-radius:11px;background:var(--blue);color:#fff;font-size:14px;
+  font-weight:500;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 15px;
+}
+.btn.ghost{background:var(--fill);color:var(--text)}
+.btn.danger{background:rgba(255,59,48,.1);color:#FF3B30}
+.btn .ic{width:16px;height:16px}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.confirm-bar{display:none;margin-top:12px;padding:11px;background:var(--fill);border-radius:11px;font-size:13px}
+.confirm-bar.show{display:block}
+.confirm-bar .btn-row{margin-top:9px}
+.tip{font-size:12px;color:var(--hint);margin-top:12px;line-height:1.7}
+
+/* tabbar */
+.tabbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:20;
+  background:var(--card);
+  background:color-mix(in srgb,var(--card) 88%,transparent);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  border-top:.5px solid var(--sep);
+  padding-bottom:env(safe-area-inset-bottom);
+  display:flex;max-width:640px;margin:0 auto;
+}
+.tab{flex:1;min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--hint);font-size:10px}
+.tab .ic{width:22px;height:22px}
+.tab.on{color:var(--blue)}
+.toast{
+  position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translate(-50%,12px);
+  background:rgba(28,28,30,.92);color:#fff;font-size:13px;padding:10px 16px;border-radius:20px;
+  z-index:40;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.footer-note{text-align:center;font-size:11px;color:var(--hint);padding:26px 10px 6px;line-height:1.7}
+</style>
+</head>
+<body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5.2 5.2L20 7"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 6.5 12 6.5 21.5 12 21.5 12 18 17.5 12 17.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.6"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></symbol>
+  <symbol id="i-done" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7.5 12.3l3 3 6-6"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6h.01"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3.5 11a8.5 8.5 0 1 1 2.4 6.5"/><path d="M3.5 5.5V11H9"/></symbol>
+</svg>
+
+<div class="app">
+  <header class="hero">
+    <div class="eyebrow">LIFE BUY LIST · 做工标杆</div>
+    <h1>一生必买</h1>
+    <p class="lede">44 件把「做工」做到行业尽头的东西。从三百块的瑞士军刀到一台施坦威，勾掉一件，就少一件将就。</p>
+    <div class="progress-card">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 72 72" aria-hidden="true">
+          <circle class="track" cx="36" cy="36" r="30" fill="none" stroke-width="6"/>
+          <circle class="bar" id="ringBar" cx="36" cy="36" r="30" fill="none" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="188.5"/>
+        </svg>
+        <div class="ring-num" id="ringNum">0%</div>
+      </div>
+      <div class="pstats">
+        <div class="big" id="pBig">已完成 <span>0</span> / 44</div>
+        <div class="small" id="pSmall">已解锁 ¥0 · 全清单约 ¥0</div>
+        <div class="cheer" id="pCheer" hidden>全部集齐，这一生没白讲究。</div>
+      </div>
+    </div>
+    <div class="toolbar" id="toolbar">
+      <div class="search-box">
+        <svg class="ic"><use href="#i-search"/></svg>
+        <input id="search" type="search" placeholder="搜索产品、品类或工艺" autocomplete="off">
+      </div>
+      <button class="hide-btn" id="hideDone" type="button"><svg class="ic"><use href="#i-eye"/></svg>隐藏已买</button>
+    </div>
+  </header>
+
+  <main id="list"></main>
+  <div class="footer-note">价格为人民币量级参考，非实时报价 · 勾选可以只是「摸过 / 体验过」，不等于下单</div>
+</div>
+
+<nav class="tabbar" aria-label="视图切换">
+  <button class="tab on" data-view="all" type="button"><svg class="ic"><use href="#i-list"/></svg>清单</button>
+  <button class="tab" data-view="done" type="button"><svg class="ic"><use href="#i-done"/></svg>已完成</button>
+  <button class="tab" data-view="about" type="button"><svg class="ic"><use href="#i-info"/></svg>关于</button>
+</nav>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const GROUPS = [
+{ id:'g1', name:'先把日常换掉', sub:'¥100 – 2,000 · 最便宜的传世品', color:'#FF9500', items:[
+  {id:'a1',name:'Victorinox 瑞士军刀',cat:'随身工具',price:300,why:'一把刀 200–400 道工序，几十个工具零干涉地装进掌心。',craft:'自制模具压制刀片，铆钉与弹簧把每个工具独立定位，开合阻尼几十年不变。最便宜的「买一把用一辈子」入门款，也是理解精密装配最直观的样本。'},
+  {id:'a2',name:'LAMY 2000 钢笔',cat:'书写',price:1600,why:'拉丝不锈钢一体笔身，几乎没有一件纯装饰的零件。',craft:'玻璃纤维增强聚碳酸酯配不锈钢，笔身无接缝；活塞上墨结构可拆修，几十年后仍配得到零件。1966 年的设计至今没改模。'},
+  {id:'a3',name:'堺孝行 三德刀',cat:'厨刀',price:1500,why:'日本约 90% 专业厨师用刀出自堺，四道工序由四位师傅各做一生。',craft:'锻造、研磨、装柄、刻字分工到人，每人只精一道；单刃开刃是为了不破坏食材切面。90% 是行业常用口径，宜作参考而非实测统计。'},
+  {id:'a4',name:'南部铁器 / 柳宗理 铸铁壶',cat:'厨具',price:1200,why:'砂型铸造、壁厚均匀，越用越顺手，可以传代。',craft:'手工砂模逐件浇铸，内壁不涂层，靠使用养出氧化层；柳宗理把民艺的形与工业的量产捏在了一起。'},
+  {id:'a5',name:'Lodge 铸铁煎锅',cat:'厨具',price:300,why:'最便宜的传世级产品：用三十年只是开始。',craft:'一体浇铸，无铆钉、无涂层，可以重新开锅翻新。它几乎不会坏，只会越用越不粘——耐用和价格无关的最好反例。'},
+  {id:'a6',name:'Frieling 全钢法压壶',cat:'咖啡',price:600,why:'全不锈钢，没有会碎的玻璃壶胆。',craft:'双层钢壁保温，金属滤网与所有易损件都能单独买。少一个可碎件，就少一次重复购买。'},
+  {id:'a7',name:'Fellow Stagg EKG 手冲壶',cat:'咖啡',price:1200,why:'壶嘴出水角度反复试水，细水流稳定得像仪器。',craft:'不锈钢一体拉伸、配重手柄让重心落在手腕上；温控版把水温做成可复现的参数。手感在这里是能被量出来的。'},
+  {id:'a8',name:'Darn Tough 羊毛袜',cat:'衣物',price:200,why:'终身保固：穿破了寄回去换新的。',craft:'美利奴羊毛配高密度针织，脚跟脚尖加固；品牌把「不换新品、只换袜」写进了商业模型，这是耐用性最诚实的一种证明。'},
+  {id:'a9',name:'Maglite 铝合金手电',cat:'工具',price:400,why:'航空铝车削筒身，所有零件可单独更换。',craft:'阳极氧化铝壳、O 型圈密封，灯泡、开关、电池仓都是可维修模块，几十年前的产品现在还配得到件。'},
+  {id:'a10',name:'Weber 原味炭火烤炉',cat:'户外',price:1200,why:'搪瓷钢体加可换零件，用三十年不退役。',craft:'三层瓷釉钢、球形盖形成对流热循环；烤网、支腿、通风片全都能单独换。结构简单到几乎没有可坏的地方。'},
+  {id:'a11',name:"Midori Traveler's Notebook",cat:'文具',price:400,why:'植鞣牛皮，越用越贴合手型。',craft:'皮革不做涂层，靠手上的油脂养出色泽；内页、橡皮筋、金属扣全是标准可替换件。少数「旧了比新的好」的工业品。'}
+]},
+{ id:'g2', name:'每天都会摸到的东西', sub:'¥2,000 – 20,000 · 手感决定日常', color:'#007AFF', items:[
+  {id:'b1',name:'iPhone Pro 系列',cat:'消费电子',price:9000,tag:'标尺',why:'这份清单的标尺：一体成型、微米级接缝、百万台不漂移。',craft:'整块铝/钛 CNC 一体成型，五轴加工关键尺寸约 ±0.02 mm，阳极氧化与喷砂控制批次色差；玻璃与中框接缝、按键旷量都是出厂验收项。真正难的是第 100 万台和第 1 万台摸起来一样。'},
+  {id:'b2',name:'MacBook Pro',cat:'电脑',price:15000,why:'铝合金 unibody 把外壳同时做成结构件和散热路径。',craft:'一体铣削机身，键盘与触控板手感逐台校准，内腔同样做倒角与涂黑。看不见的地方照样做，是苹果最容易被低估的一点。'},
+  {id:'b3',name:'Herman Miller Aeron',cat:'座椅',price:12000,why:'压铸铝骨架加 8 区张力网面，12 年全件保修。',craft:'倾仰机构做 12 万次循环测试，关键转轴公差控制在零点几毫米级；零件可单独更换，五年后二手仍值约半价。把「可修复」写进设计，比写进广告更有说服力。'},
+  {id:'b4',name:'Sony WH-1000XM 系列',cat:'音频',price:2800,why:'头梁阻尼、耳罩转轴与降噪算法一起调校。',craft:'把「戴上去的那一下」也当成声学指标：伸缩阻力、转轴静音、耳罩压力分布都可量化。量产消费电子里少见的手感整体设计。'},
+  {id:'b5',name:'DJI 大疆口袋云台相机',cat:'影像',price:3500,tag:'中国制造',why:'三轴机械增稳塞进口袋，精度靠无刷电机与编码器闭环。',craft:'云台电机控制到角分级，装配后逐台做动态标定。国产消费电子里最像 iPhone 的一支：把精密机构做成百万台量级的日用品。'},
+  {id:'b6',name:'RIMOWA 铝镁行李箱',cat:'出行',price:7000,why:'沟槽式铝壳加可换轮组，用坏了修而不是扔。',craft:'铝板冲压成标志性沟槽，铆钉、锁扣、轮子、拉链全是标准可换件，品牌提供长期维修。旅行箱最该做的工，是十年后还配得到轮子。'},
+  {id:'b7',name:'Vitamix 破壁机',cat:'厨房',price:5000,why:'一台用二十年，刀具与杯体都可单独换。',craft:'金属传动轴而非塑料齿轮，电机做过长时间负载验证；整机结构简单到几乎没有可坏的地方。保修期只是结果，不是目标。'},
+  {id:'b8',name:'Bang & Olufsen 音响',cat:'音响',price:6000,why:'铝挤压—CNC—阳极氧化一体外壳，手感与音质同级验收。',craft:'旋钮阻尼、开合声、接缝间隙都进出厂检验；铝件由自家工厂阳极氧化，保证批次色泽一致。音响行业里把表面处理当核心工艺的少数派。'},
+  {id:'b9',name:'Apple Watch Ultra',cat:'穿戴',price:6000,why:'钛壳与蓝宝石表镜的密封贴合，是穿戴设备的公差上限。',craft:'一体钛壳、蓝宝石镜面与防水密封同时满足，按键与数码表冠阻尼逐台校准。体积越小，公差越难，这是清单里最「紧」的一件。'},
+  {id:'b10',name:"Arc'teryx 硬壳冲锋衣",cat:'户外',price:6000,why:'压胶条宽度、缝线密度与立体剪裁，是服装里的装配公差。',craft:'每道缝线背后贴窄幅防水压胶条，激光裁片减少接缝；拉链、袖口、帽檐都可维修更换。布料之外的功夫，才决定它在暴雨里撑多久。'}
+]},
+{ id:'g3', name:'大件与空间', sub:'¥20,000 – 200,000 · 一次投入，用几十年', color:'#34C759', items:[
+  {id:'c1',name:'Leica M 机身 + 50mm 镜头',cat:'相机',price:90000,why:'官方资料：约 1100 个零件、50 多道调校、10 微米凸轮公差。',craft:'黄铜顶/底盖从实心金属块铣出后手工抛光 40 分钟；测距凸轮逐个与取景器配磨，公差约 10 微米（约头发丝的六分之一）；1954 年的镜头还能装在新机身上。兼容性本身就是一种做工。'},
+  {id:'c2',name:'Vitra Eames Lounge Chair',cat:'家具',price:45000,why:'模压胶合板加皮革，螺丝可调可换，坐三十年不松。',craft:'五层曲木热压成型，橡胶减震垫连接木壳与铝底座；所有连接件都是标准件，可拆可修。舒适被做成了一套可复制的结构。'},
+  {id:'c3',name:'Rolex Submariner / Datejust',cat:'腕表',price:75000,why:'手工精度被做成可规模化复制的标准。',craft:'自产 904L 钢，成品表复测做到 −2/+2 秒/日；COSC 裸机芯在 5 方位、3 温度（8/23/38℃）下连测 15 天只是起点。它证明「极致」和「量产」不必然矛盾。'},
+  {id:'c4',name:'Colnago C68 车架',cat:'自行车',price:60000,why:'反潮流地用 8 块碳模块手工胶合，而不是一体成型。',craft:'接头手工包碳带再锉平，把结构优势做成无缝外观；意大利工厂逐支做刚性测试。在人人追求一体成型的年代，它靠手工接合赢。'},
+  {id:'c5',name:'Miele / Gaggenau 厨房电器',cat:'家电',price:80000,why:'按 20 年设计寿命做测试，而不是按保修期。',craft:'门铰链、密封圈、电机都按数万次循环验证，零件供应承诺十年以上。家电的做工看不见，只在第十五年才被感知。'},
+  {id:'c6',name:'TOTO NEOREST / 汉斯格雅',cat:'卫浴',price:35000,why:'陶瓷釉面与出水孔径的一致性，是卫浴的隐形做工。',craft:'一体化陶瓷成型无接缝死角，喷嘴与阀芯为可换模块；出水角度与水形逐件测试。每天用、却最没人研究的一类产品。'},
+  {id:'c7',name:'Hasselblad X2D 中画幅',cat:'影像',price:55000,why:'中画幅机身与镜间快门的装配精度，比像素更难得。',craft:'机身一体铝铣削，传感器位置做微米级校准；镜间快门与机身同步标定。哈苏的色彩科学与机械精度，是同一件事的两面。'},
+  {id:'c8',name:'KEF / Devialet 家庭音响',cat:'音响',price:40000,why:'单元、箱体与分频器一体设计，把共振当成公差来控制。',craft:'箱体采用约束层阻尼结构，单元逐只配对；外观铝件同样是精密加工件。听不见的箱体共振，恰恰是最费工的部分。'},
+  {id:'c9',name:'一张 25 年保固的乳胶床垫',cat:'睡眠',price:25000,why:'最不显眼、但每天用八小时的大件。',craft:'天然乳胶配独立袋装弹簧，可翻转、可换外套；25 年保固把耐用性直接写进价格。按「每年成本」算，它常常比便宜床垫更划算。'}
+]},
+{ id:'g4', name:'会改变生活半径的机器', sub:'¥200,000 以上 · 工程即做工', color:'#AF52DE', items:[
+  {id:'d1',name:'Tesla Model 3 / Model Y',cat:'汽车',price:250000,tag:'本次补入',tag2:'重新定义制造',why:'架构级做工：把 70 多个零件压成 1 个，让车在交付之后继续进化。',craft:'9000 吨级一体化压铸把后底板从 70 余件冲压焊接件变成 1 个铝铸件；结构化电池包参与受力，线束从约 3 km 缩到 100 m，30 多个分布式 ECU 收敛为 3 个域控制器；深度 OTA 可持续改性能与功能。说清楚一点：它的强项是制造架构与软件定义，不是钣金缝隙。2026 年上海/德州工厂的装配一致性已明显改善，但按「缝隙均匀」这把传统尺子量，仍不及丰田、宝马的顶尖水准。它和 iPhone 像在「把复杂系统重新做一遍」，不像在「把边缘倒角抛光」。'},
+  {id:'d2',name:'Tesla Cybertruck / Model S Plaid',cat:'汽车',price:800000,tag:'有争议',why:'把冷轧不锈钢外骨骼与 2 秒级加速一起量产，是一场极限实验。',craft:'Cybertruck 用不锈钢激光刻痕折弯、免喷涂，省掉整个涂装车间；早期批次出现过面板接缝起翘、饰件脱落与 2–5 mm 缝隙差，2025–26 年已有改进但缝隙一致性仍是争议点。买它是买工程野心，不是买「严丝合缝」——这一条值得在下单前想清楚。'},
+  {id:'d3',name:'Porsche 911',cat:'汽车',price:1300000,why:'装配公差与耐久性的行业标尺，兼顾日常量产与赛道强度。',craft:'车身缝隙、关门声、内饰缝线长期被当作对照基准；一台车要能日常通勤，也能连续下赛道，是「一致性」最难成立的场景。'},
+  {id:'d4',name:'Toyota Land Cruiser / 路虎卫士',cat:'汽车',price:800000,why:'另一种极致：把「坏不了、修得好」做成设计目标。',craft:'非承载式车身与可维修的机械结构，零件在全球范围长期供应；不追求精致触感，追求在无人区也能被修好。做工有时是「不给你添麻烦」。'},
+  {id:'d5',name:'Ducati Panigale V4',cat:'摩托',price:300000,why:'两轮里的精密装配：车架、发动机与电控一体标定。',craft:'铝合金单体壳车架直接让发动机承力，装配后逐台做动力与电控标定。零件少一件，刚性、重量与振动都要重新算一遍。'},
+  {id:'d6',name:'一辆改装露营车',cat:'出行',price:600000,why:'把一个家压进两米宽的空间，每一寸都要算。',craft:'家具五金、水电系统、密封与配重全部按车规做振动测试；真正的做工藏在柜门用了五年还不会异响。会跑的房子，比房子难做得多。'}
+]},
+{ id:'g5', name:'传世级 · 一辈子只买一次', sub:'可传代 · 时间比机器更贵', color:'#FF2D55', items:[
+  {id:'e1',name:'Patek Philippe / A. Lange & Söhne',cat:'腕表',price:350000,why:'日内瓦印记 12 条：连看不见的钢件侧面也必须倒角抛光。',craft:'内角倒角与黑色抛光（约 20000 目）只能手工完成，打磨纹路于是成了鉴定真伪的签名；瑞士年产约两千万枚表，仅约 2.4 万枚能刻上印记。装饰工艺同时是防伪工艺，这是最漂亮的一层逻辑。'},
+  {id:'e2',name:'Hermès Birkin / Kelly',cat:'皮具',price:150000,why:'一人一包、工匠编号终身追溯。',craft:'马鞍针法双针对穿、每针独立锁扣，断线不会连锁散开；油边分 3–7 层薄涂逐层打磨。制包工时口径从 18 到 48 小时不等，来自品牌与拍卖行，宜作参考而非实测。'},
+  {id:'e3',name:'Steinway & Sons D-274',cat:'钢琴',price:1200000,why:'12,000+ 零件、约一年工期、80% 手工。',craft:'阿拉斯加单一岛的锡特卡云杉，仅约 30% 木料通过筛选；音板中心向边缘渐薄，逐键配重、逐槌整音后由主检验师签字。品牌称 90% 以上音乐会钢琴家选用施坦威，属品牌口径。'},
+  {id:'e4',name:'Rolls-Royce / Bentley',cat:'汽车',price:5000000,why:'0.6 mm 旋切木皮镜像对拼，5 层漆手工打磨 5 遍。',craft:'木皮取自同一棵树，纹理在车内左右对称；宾利产线每分钟只前进 6 英寸，一台车内饰约 13 天。极致做工在这里直接等于「慢」。'},
+  {id:'e5',name:'中屋万年笔',cat:'书写',price:12000,why:'15 层以上轮岛漆，按你的笔迹调笔尖。',craft:'每层漆打磨后再涂，耗时数月；工匠根据手写样张的力度与倾角调尖的粗细与软硬。少数真正「只为你做一件」的量产品。'},
+  {id:'e6',name:'Leica Noctilux-M 75mm f/1.25',cat:'光学',price:80000,why:'把机械精度推到极限，全开光圈就是最佳画质。',craft:'浮动镜组需两组镜片独立移动；非球面镜片面形达 0.01 微米级，单支镜头 60 多道质检。光学与机械在这里根本分不开。'},
+  {id:'e7',name:'Savile Row 全定制西装',cat:'衣物',price:50000,why:'全麻衬、几十小时手工，一件可以改一辈子。',craft:'多次试身、纸样为一人独存；全麻衬靠手工纳驳头塑形，不像粘合衬几年就起泡。合身是可以随时间维护的状态。'},
+  {id:'e8',name:'一件手工实木家具（飞驒 / 指物）',cat:'家具',price:60000,why:'不用一颗钉子，靠榫卯吃住几十年的木材形变。',craft:'木料按纹理与含水率配选，榫头留微量伸缩余量；表面用手工刨而非砂纸，可反复修复重涂。它承认材料会动，而不是假装不会。'}
+]}
+];
+
+const KEY='life-buylist-v1';
+const state={done:{},custom:[],closed:{},expanded:{},view:'all',q:'',hideDone:false,confirm:false};
+try{const raw=localStorage.getItem(KEY);if(raw){const s=JSON.parse(raw);Object.assign(state,s,{view:'all',q:'',hideDone:false,confirm:false,expanded:{}});}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({done:state.done,custom:state.custom,closed:state.closed}));}catch(e){toast('本机存储不可用，进度只在本次打开有效');}}
+function allGroups(){
+  const gs=GROUPS.map(g=>({...g,items:g.items.slice()}));
+  if(state.custom.length)gs.push({id:'mine',name:'我的补充',sub:'自己加的才算数',color:'#5856D6',items:state.custom.slice()});
+  return gs;
+}
+function allItems(){return allGroups().flatMap(g=>g.items);}
+function fmt(n){
+  if(!n&&n!==0)return '—';
+  if(n>=100000000)return '¥'+(n/100000000).toFixed(1).replace(/\.0$/,'')+' 亿';
+  if(n>=10000)return '¥'+(n/10000).toFixed(n%10000===0?0:1).replace(/\.0$/,'')+' 万';
+  return '¥'+Number(n).toLocaleString('zh-CN');
+}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),1900);}
+function isDone(id){return !!state.done[id];}
+function match(it){
+  if(!state.q)return true;
+  const q=state.q.toLowerCase();
+  return (it.name+' '+it.cat+' '+(it.why||'')+' '+(it.craft||'')+' '+(it.tag||'')).toLowerCase().includes(q);
+}
+
+function updateStats(){
+  const items=allItems();
+  const total=items.length,done=items.filter(i=>isDone(i.id)).length;
+  const budget=items.reduce((s,i)=>s+(Number(i.price)||0),0);
+  const unlocked=items.filter(i=>isDone(i.id)).reduce((s,i)=>s+(Number(i.price)||0),0);
+  const pct=total?done/total:0;
+  document.getElementById('ringBar').style.strokeDashoffset=(188.5*(1-pct)).toFixed(1);
+  document.getElementById('ringNum').textContent=Math.round(pct*100)+'%';
+  document.getElementById('pBig').innerHTML='已完成 <span>'+done+'</span> / '+total;
+  document.getElementById('pSmall').innerHTML='已解锁 <b>'+fmt(unlocked)+'</b> · 全清单约 '+fmt(budget);
+  document.getElementById('pCheer').hidden=!(total>0&&done===total);
+}
+function render(){
+  updateStats();
+  const gs=allGroups();
+  document.getElementById('toolbar').style.display=state.view==='about'?'none':'flex';
+  const hb=document.getElementById('hideDone');hb.classList.toggle('on',state.hideDone);
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.view===state.view));
+  const main=document.getElementById('list');
+  if(state.view==='about'){main.innerHTML=aboutHTML();return;}
+
+  let html='',shown=0;
+  gs.forEach(g=>{
+    let list=g.items.filter(match);
+    if(state.view==='done')list=list.filter(i=>isDone(i.id));
+    else if(state.hideDone)list=list.filter(i=>!isDone(i.id));
+    if(!list.length)return;
+    shown+=list.length;
+    const gDone=g.items.filter(i=>isDone(i.id)).length;
+    const closed=!!state.closed[g.id];
+    html+='<section class="section'+(closed?' closed':'')+'" data-g="'+g.id+'">'
+      +'<button class="sec-head" data-act="fold" data-g="'+g.id+'" type="button">'
+      +'<span class="dot" style="background:'+g.color+'"></span>'
+      +'<span class="sec-title">'+esc(g.name)+'<span class="sec-sub">'+esc(g.sub)+'</span></span>'
+      +'<span class="sec-count">'+gDone+'/'+g.items.length+'</span>'
+      +'<svg class="ic sec-chev"><use href="#i-down"/></svg></button>';
+    if(!closed){
+      html+='<div class="group-card">';
+      list.forEach(it=>{html+=itemHTML(it,g);});
+      html+='</div>';
+    }
+    html+='</section>';
+  });
+  if(!shown){
+    const msg=state.q?'没有匹配的东西':'这里还空着';
+    const sub=state.q?'换个关键词试试，比如「压铸」「公差」「徕卡」。':(state.view==='done'?'回到清单勾掉第一件，它会自己跑到这里。':'试试关掉「隐藏已买」。');
+    html='<div class="empty"><strong>'+msg+'</strong>'+sub+'</div>';
+  }
+  main.innerHTML=html;
+}
+
+function itemHTML(it,g){
+  const done=isDone(it.id),open=!!state.expanded[it.id];
+  let tags='<span class="cat">'+esc(it.cat)+'</span>';
+  if(it.tag)tags+='<span class="tag'+(it.tag==='有争议'?' warn':(it.tag==='本次补入'?' star':''))+'">'+esc(it.tag)+'</span>';
+  if(it.tag2)tags+='<span class="tag star">'+esc(it.tag2)+'</span>';
+  let d='';
+  if(open){
+    d='<div class="detail"><div class="craft">'+esc(it.craft||it.why||'')+'</div>'
+      +'<div class="dline">参考价位 '+fmt(it.price)+' · 所属：'+esc(g.name)+'</div>'
+      +(done&&state.done[it.id]?'<div class="dline">完成于 '+new Date(state.done[it.id]).toLocaleDateString('zh-CN')+'</div>':'')
+      +(it.custom?'<button class="danger" data-act="del" data-id="'+it.id+'" type="button"><svg class="ic"><use href="#i-trash"/></svg>删除这一项</button>':'')
+      +'</div>';
+  }
+  return '<div class="item'+(done?' done':'')+(open?' open':'')+'" data-id="'+esc(it.id)+'">'
+    +'<div class="item-row" role="checkbox" aria-checked="'+done+'" tabindex="0" data-act="toggle" data-id="'+esc(it.id)+'">'
+    +'<span class="check"><svg class="ic"><use href="#i-check"/></svg></span>'
+    +'<div class="item-main"><div class="item-top"><span class="item-name">'+esc(it.name)+'</span><span class="price">'+fmt(it.price)+'</span></div>'
+    +'<div class="meta">'+tags+'</div><div class="why">'+esc(it.why||'')+'</div></div>'
+    +'<button class="chev-btn" data-act="expand" data-id="'+esc(it.id)+'" aria-label="展开做工详情" type="button"><svg class="ic"><use href="#i-chev"/></svg></button>'
+    +'</div>'+d+'</div>';
+}
+
+function aboutHTML(){
+  const standalone=window.navigator.standalone===true;
+  const ios=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  const tip=standalone?'已以全屏方式运行，进度会一直留在这台设备上。':
+    (ios?'在 Safari 点底部分享按钮 → 「添加到主屏幕」，就能像 App 一样全屏打开，进度照常保留。':
+    '手机浏览器里也可以「添加到主屏幕」，全屏打开更像一个 App。');
+  return '<div class="about-card"><h2>这份清单在挑什么</h2>'
+   +'<p>不是「最贵」，也不是「最值得炫耀」。入选的是那些把做工推到行业尽头、并且能被具体说清楚的东西：材料与表面、微米级公差、看不见的地方照样做、手感可以验收、以及大规模的一致性或可修复性。</p>'
+   +'<p>它们分成三条路线：和 iPhone 同源的<b>量产精密派</b>、用时间换精度的<b>手作极致派</b>，以及把制造方式重做一遍的<b>架构派</b>。Tesla 属于第三类——一体化压铸把 70 多件变 1 件、线束从约 3 km 缩到 100 m、OTA 让车交付后继续进化；但钣金缝隙的一致性到 2026 年仍不是它的强项，这一点清单里如实写了。</p></div>'
+   +'<div class="about-card"><h2>数据说明</h2><ul>'
+   +'<li>价格是人民币<b>量级参考</b>，不是实时报价，配置与地区差异很大。</li>'
+   +'<li>可核验的硬标准：日内瓦印记 12 条、COSC 五方位三温度 15 天、徕卡官方 10 微米凸轮公差、Aeron 12 万次倾仰测试。</li>'
+   +'<li>属于品牌或行业口径、宜作参考：「堺占专业厨刀 90%」「施坦威 90%+ 音乐会钢琴家」「Birkin 18–48 小时」。</li>'
+   +'<li>勾选不等于下单，也可以只记「摸过 / 体验过 / 见过实物」。</li></ul>'
+   +'<p>'+tip+'</p><p>进度只存在这台设备的浏览器里，不上传；换设备或清缓存会丢失，建议偶尔导出备份一次。</p></div>'
+   +'<div class="about-card"><h2>加一件你自己的</h2>'
+   +'<div class="field"><label for="cName">名称</label><input id="cName" placeholder="例：爷爷留下的那把刨子" maxlength="40"></div>'
+   +'<div class="field"><label for="cPrice">参考价（元，可留空）</label><input id="cPrice" type="number" inputmode="numeric" placeholder="例：1200" min="0"></div>'
+   +'<div class="field"><label for="cWhy">为什么它在清单里</label><input id="cWhy" placeholder="一句话就好" maxlength="80"></div>'
+   +'<div class="btn-row"><button class="btn" data-act="add" type="button"><svg class="ic"><use href="#i-plus"/></svg>加入清单</button></div></div>'
+   +'<div class="about-card"><h2>备份与管理</h2>'
+   +'<div class="btn-row"><button class="btn ghost" data-act="export" type="button"><svg class="ic"><use href="#i-copy"/></svg>复制清单文本</button>'
+   +'<button class="btn danger" data-act="reset" type="button"><svg class="ic"><use href="#i-reset"/></svg>清空所有勾选</button></div>'
+   +'<div class="confirm-bar'+(state.confirm?' show':'')+'" id="confirmBar">确定清空全部勾选记录？自定义添加的项目会保留。'
+   +'<div class="btn-row"><button class="btn danger" data-act="reset-yes" type="button">确认清空</button><button class="btn ghost" data-act="reset-no" type="button">取消</button></div></div>'
+   +'<div class="tip">导出后可粘到备忘录或任意云笔记里，换手机时不用重新勾。</div></div>';
+}
+
+function exportText(){
+  const gs=allGroups();let out='一生必买 · 做工标杆清单\n'+new Date().toLocaleDateString('zh-CN')+'\n\n';
+  gs.forEach(g=>{
+    out+='【'+g.name+'】\n';
+    g.items.forEach(i=>{out+=(isDone(i.id)?'[✓] ':'[ ] ')+i.name+'  '+fmt(i.price)+(i.why?' — '+i.why:'')+'\n';});
+    out+='\n';
+  });
+  const items=allItems(),done=items.filter(i=>isDone(i.id)).length;
+  out+='进度：'+done+' / '+items.length;
+  return out;
+}
+function copyText(t){
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(()=>toast('清单已复制')).catch(()=>fallbackCopy(t));}
+  else fallbackCopy(t);
+}
+function fallbackCopy(t){
+  const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.focus();ta.select();
+  try{document.execCommand('copy');toast('清单已复制');}catch(e){toast('复制失败，请换个浏览器');}
+  document.body.removeChild(ta);
+}
+
+document.addEventListener('click',e=>{
+  const tab=e.target.closest('.tab');
+  if(tab){state.view=tab.dataset.view;state.confirm=false;window.scrollTo({top:0,behavior:'smooth'});render();return;}
+  const btn=e.target.closest('[data-act]');
+  if(!btn)return;
+  const act=btn.dataset.act,id=btn.dataset.id;
+  if(act==='expand'){
+    e.stopPropagation();state.expanded[id]=!state.expanded[id];render();return;
+  }
+  if(act==='toggle'){
+    if(isDone(id))delete state.done[id];else state.done[id]=Date.now();
+    save();
+    if(navigator.vibrate)navigator.vibrate(8);
+    const row=btn.closest('.item');
+    if(state.view==='done'||state.hideDone||state.q||state.expanded[id]){
+      render();
+    }else{
+      const nowDone=isDone(id);
+      row.classList.toggle('done',nowDone);
+      btn.setAttribute('aria-checked',String(nowDone));
+      const ck=row.querySelector('.check');
+      if(ck){ck.classList.add('pop');setTimeout(()=>ck.classList.remove('pop'),200);}
+      const sec=row.closest('.section');
+      if(sec){
+        const g=allGroups().find(x=>x.id===sec.dataset.g);
+        if(g){
+          const c=g.items.filter(i=>isDone(i.id)).length;
+          const el=sec.querySelector('.sec-count');
+          if(el)el.textContent=c+'/'+g.items.length;
+        }
+      }
+      updateStats();
+    }
+    return;
+  }
+  if(act==='fold'){
+    const g=btn.dataset.g;state.closed[g]=!state.closed[g];save();render();return;
+  }
+  if(act==='del'){
+    state.custom=state.custom.filter(i=>i.id!==id);delete state.done[id];save();toast('已删除');render();return;
+  }
+  if(act==='add'){
+    const n=document.getElementById('cName').value.trim();
+    if(!n){toast('先写个名称');document.getElementById('cName').focus();return;}
+    const p=parseInt(document.getElementById('cPrice').value,10)||0;
+    const w=document.getElementById('cWhy').value.trim();
+    state.custom.push({id:'c'+Date.now(),name:n,cat:'自定义',price:p,why:w||'自己加的，理由自己最清楚。',craft:w||'自己加的，理由自己最清楚。',custom:true});
+    save();state.view='all';toast('已加入清单');render();return;
+  }
+  if(act==='export'){copyText(exportText());return;}
+  if(act==='reset'){state.confirm=true;render();document.getElementById('confirmBar').scrollIntoView({behavior:'smooth',block:'center'});return;}
+  if(act==='reset-no'){state.confirm=false;render();return;}
+  if(act==='reset-yes'){state.done={};state.confirm=false;save();toast('勾选已清空');render();return;}
+});
+document.addEventListener('keydown',e=>{
+  if((e.key===' '||e.key==='Enter')&&e.target.matches('.item-row')){
+    e.preventDefault();e.target.click();
+  }
+});
+document.getElementById('search').addEventListener('input',e=>{state.q=e.target.value.trim();render();});
+document.getElementById('hideDone').addEventListener('click',e=>{state.hideDone=!state.hideDone;render();});
+render();
+</script>
+</body>
+</html>
